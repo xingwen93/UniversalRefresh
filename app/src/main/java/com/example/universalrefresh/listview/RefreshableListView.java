@@ -2,13 +2,15 @@ package com.example.universalrefresh.listview;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.AbsListView;
 
 import com.example.universalrefresh.base.RefreshableWrapper;
+import com.example.universalrefresh.base.RefreshableWrapper2;
 import com.example.universalrefresh.footer.ZCMFooter;
 import com.example.universalrefresh.header.ZCMHeader;
 
-public class RefreshableListView extends RefreshableWrapper<ZCMHeader, StickyListView, ZCMFooter> implements AbsListView.OnScrollListener {
+public class RefreshableListView extends RefreshableWrapper<ZCMHeader, StickyListView, ZCMFooter> {
 
 	private StickyListView refreshListView;
 
@@ -18,7 +20,7 @@ public class RefreshableListView extends RefreshableWrapper<ZCMHeader, StickyLis
 
     @Override
     public ZCMHeader onCreateRefreshHeader() {
-       return new ZCMHeader(getContext());
+        return new ZCMHeader(getContext());
     }
 
 	@Override
@@ -41,10 +43,11 @@ public class RefreshableListView extends RefreshableWrapper<ZCMHeader, StickyLis
 
     @Override
 	protected boolean isReadyToPullDown() {
-		if (refreshListView.getChildCount() != 0) {
-            return refreshListView.getFirstVisiblePosition() == 0 && refreshListView.getChildAt(0).getTop() == 0;
+        if (refreshListView.getChildCount() != 0) {
+            return refreshListView.getFirstVisiblePosition() == 0
+                    && refreshListView.getChildAt(0).getTop() == 0;
 		}
-        return false;
+        return true;
 	}
 
     @Override
@@ -59,19 +62,7 @@ public class RefreshableListView extends RefreshableWrapper<ZCMHeader, StickyLis
             return refreshListView.getLastVisiblePosition() == adapterChildCount - 1
                     && refreshListView.getChildAt(refreshListView.getChildCount() - 1).getBottom() >= refreshListView.getHeight();
         }
-        return false;
-    }
-
-    @Override
-    public void onScrollStateChanged(AbsListView view, int scrollState) {
-
-    }
-
-    @Override
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-        if (firstVisibleItem + visibleItemCount == totalItemCount - 1) {
-
-        }
+        return true;
     }
 
 }

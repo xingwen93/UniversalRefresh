@@ -27,6 +27,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		super.onCreate(savedInstanceState);
         testListView();
 //        testScrollView();
+//        testTextView();
 	}
 
     public void testListView() {
@@ -34,22 +35,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
         RefreshableListView refreshableListView = (RefreshableListView) findViewById(R.id.list_view);
         refreshableListView.getRefreshContentView().setOnItemClickListener(this);
         refreshableListView.getRefreshContentView().setShadowVisible(true);
-        refreshableListView.setOnRefreshListener(new RefreshableWrapper.OnRefreshListener() {
-            @Override
-            public void onPull(int refreshType, int maxValue, int offset) {
-            }
-
-            @Override
-            public void onRefreshing(int refreshType) {
-            }
-
-            @Override
-            public void onRefreshComplete(int refreshType) {
-            }
-        });
-
         List<Item> list = new ArrayList<Item>();
-        final int groupCount = 20;
+        final int groupCount = 12;
         for (int groupPosition = 0; groupPosition < groupCount; groupPosition++) {
             ItemGroup group = new ItemGroup();
             group.setGroupName(String.valueOf(groupPosition));
@@ -78,7 +65,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
         UnScrollableListView listView = (UnScrollableListView) contentView.findViewById(R.id.list_view);
         listView.setOnItemClickListener(this);
         List<Item> list = new ArrayList<Item>();
-        final int groupCount = 10;
+        final int groupCount = 12;
 
         for (int groupPosition = 0; groupPosition < groupCount; groupPosition++) {
             ItemGroup group = new ItemGroup();
@@ -98,6 +85,10 @@ public class MainActivity extends Activity implements OnItemClickListener {
 
         MyAdapter adapter = new MyAdapter(this, list);
         listView.setAdapter(adapter);
+    }
+
+    private void testTextView() {
+
     }
 
 	@Override

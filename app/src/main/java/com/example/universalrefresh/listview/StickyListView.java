@@ -558,7 +558,12 @@ public class StickyListView extends ListView {
     	emptyView.setLayoutParams(new LayoutParams(-1, -1));
     	emptyView.setBackgroundColor(Color.YELLOW);
     	ViewGroup parent = (ViewGroup) getParent();
-    	parent.addView(emptyView);
+        if (parent.getChildCount() > 1) {
+            parent.addView(emptyView, 1);
+        } else {
+            parent.addView(emptyView);
+        }
+
     	setEmptyView(emptyView);
 
     }

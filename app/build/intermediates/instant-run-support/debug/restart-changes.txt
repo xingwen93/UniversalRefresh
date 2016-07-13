@@ -1,3 +1,0 @@
-CHANGED,D:\AndroidStudioWorkspace\UniversalRefresh\app\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\example\universalrefresh\RefreshableWrapper2.class
-CHANGED,D:\AndroidStudioWorkspace\UniversalRefresh\app\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\example\universalrefresh\RefreshableWrapper2$1.class
-CHANGED,D:\AndroidStudioWorkspace\UniversalRefresh\app\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\example\universalrefresh\RefreshableWrapper2$State.class
