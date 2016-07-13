@@ -25,8 +25,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-        testListView();
-//        testScrollView();
+//        testListView();
+        testScrollView();
 //        testTextView();
 	}
 
