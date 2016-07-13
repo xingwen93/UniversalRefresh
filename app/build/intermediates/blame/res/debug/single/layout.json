@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main_list_view.xml",
+        "source": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\src\\main\\res\\layout\\activity_main_list_view.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_member.xml",
+        "source": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\src\\main\\res\\layout\\item_member.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_listview_header.xml",
+        "source": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\src\\main\\res\\layout\\pull_to_refresh_listview_header.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main_scroll_view.xml",
+        "source": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\src\\main\\res\\layout\\activity_main_scroll_view.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_content.xml",
+        "source": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\src\\main\\res\\layout\\layout_content.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_product.xml",
+        "source": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\src\\main\\res\\layout\\item_product.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_group.xml",
+        "source": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\src\\main\\res\\layout\\item_group.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_empty_view.xml",
+        "source": "D:\\AndroidStudioWorkspace\\UniversalRefresh\\app\\src\\main\\res\\layout\\layout_empty_view.xml"
+    }
+]
