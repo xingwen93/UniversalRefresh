@@ -2,7 +2,6 @@ package com.example.universalrefresh.base;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -160,30 +159,15 @@ public abstract class BaseWrapper<Header extends BaseHeader, Content extends Vie
 
         if (heightMode == MeasureSpec.EXACTLY) {
             height = heightSize;
+            if (height - mContentView.getMeasuredHeight() >= mFooterView.getMeasuredHeight()) {
+                togglePullUp(false);
+            }
         } else {
             height = mContentView.getMeasuredHeight();
         }
 
         setMeasuredDimension(width, height);
     }
-
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        super.onLayout(changed, l, t, r, b);
-
-        if (mFooterView != null && mFooterViewHeight != 0) {
-            mFooterView.layout(0, getMeasuredHeight(), getMeasuredWidth(), getMeasuredHeight() + mFooterViewHeight);
-        }
-    }
-
-//    @Override
-//    public boolean dispatchTouchEvent(MotionEvent ev) {
-//        boolean hasTarget = super.dispatchTouchEvent(ev);
-//        if (!hasTarget) {
-//            return onInterceptTouchEvent(ev);
-//        }
-//        return true;
-//    }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
@@ -390,8 +374,11 @@ public abstract class BaseWrapper<Header extends BaseHeader, Content extends Vie
 
     public abstract boolean enablePullDown();
 
-    public void tooglePullDown(boolean toggle) {
+    public void togglePullDown(boolean toggle) {
         mIsEnablePullDown = toggle;
+        if (mHeaderView != null) {
+            mHeaderView.setVisibility(toggle ? VISIBLE : GONE);
+        }
     }
 
 	public Header onCreateRefreshHeader() {
@@ -400,8 +387,11 @@ public abstract class BaseWrapper<Header extends BaseHeader, Content extends Vie
 
     public abstract boolean enablePullUp();
 
-    public void tooglePullUp(boolean toggle) {
+    public void togglePullUp(boolean toggle) {
         mIsEnablePullUp = toggle;
+        if (mFooterView != null) {
+            mFooterView.setVisibility(toggle ? VISIBLE : GONE);
+        }
     }
 
     public Footer onCreateRefreshFooter() {

@@ -86,7 +86,7 @@ public class TestListViewActivity extends Activity implements AdapterView.OnItem
             group.setGroupName(String.valueOf(groupPosition));
             list.add(group);
 
-            for (int memberPosition = 0; memberPosition < 2; memberPosition++) {
+            for (int memberPosition = 0; memberPosition < 3; memberPosition++) {
                 ItemMember member = new ItemMember();
                 member.setText(groupPosition + "-" + memberPosition);
                 list.add(member);

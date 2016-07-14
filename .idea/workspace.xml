@@ -13,7 +13,7 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="WARN" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
@@ -61,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/test/TestListViewActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+              <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
               <folding>
                 <element signature="e#2712#2718#0" expanded="true" />
                 <element signature="e#3539#3545#0" expanded="true" />
@@ -70,11 +70,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="activity_test_listview.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_test_listview.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.5263157">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ListViewWrapper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/listview/ListViewWrapper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1208#1209#0" expanded="true" />
@@ -87,13 +100,16 @@
       <file leaf-file-name="BaseWrapper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3049482">
-              <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="176" selection-end-column="5" />
+            <state vertical-scroll-proportion="1.1449943">
+              <caret line="163" column="13" selection-start-line="163" selection-start-column="13" selection-end-line="163" selection-end-column="13" />
               <folding>
                 <element signature="class#State#0;class#BaseWrapper#0" expanded="false" />
-                <element signature="method#BaseWrapper#0;class#BaseWrapper#0" expanded="false" />
-                <element signature="method#init#0;class#BaseWrapper#0" expanded="false" />
-                <element signature="method#onMeasure#0;class#BaseWrapper#0" expanded="false" />
+                <element signature="e#2176#2856#0" expanded="true" />
+                <element signature="e#2855#2856#0" expanded="true" />
+                <element signature="method#onInterceptTouchEvent#0;class#BaseWrapper#0" expanded="false" />
+                <element signature="method#onTouchEvent#0;class#BaseWrapper#0" expanded="false" />
+                <element signature="e#11871#11872#0" expanded="true" />
+                <element signature="e#11913#11914#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1766,10 +1782,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/test/TestScrollViewActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/listview/ListViewWrapper.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_test_scroll_view_content.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/listview/MyAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_test_listview.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/test/TestListViewActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/test/TestListViewActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_test_listview.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/listview/MyAdapter.java" />
       </list>
     </option>
   </component>
@@ -2110,7 +2126,7 @@
     <property name="android.sdk.path" value="D:/sdk" />
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="device.picker.selection" value="bfd2c07b" />
+    <property name="device.picker.selection" value="91QEBNP2KBFG" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/build/outputs/apk" />
     <property name="ExportApk.ApkPath" value="D:\AndroidStudioWorkspace\UniversalRefresh\app\build\outputs\apk" />
     <property name="ExportApk.Flavors" value="" />
@@ -2485,36 +2501,48 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java</url>
-          <line>415</line>
+          <line>405</line>
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java</url>
-          <line>79</line>
+          <line>78</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java</url>
-          <line>327</line>
+          <line>311</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java</url>
+          <line>377</line>
+          <properties />
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java</url>
-          <line>326</line>
+          <line>310</line>
           <properties class="com.example.universalrefresh.base.BaseWrapper" method="startOperating" />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java</url>
-          <line>66</line>
+          <line>65</line>
           <properties class="com.example.universalrefresh.base.BaseWrapper" method="init" />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java</url>
+          <line>221</line>
+          <properties class="com.example.universalrefresh.base.BaseWrapper" method="onTouchEvent" />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="20" />
+      <option name="time" value="22" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2733,14 +2761,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/sdk/sources/android-20/android/widget/LinearLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1668" column="0" selection-start-line="1668" selection-start-column="0" selection-end-line="1668" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/header_zcm.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -2749,17 +2769,6 @@
         <state vertical-scroll-proportion="0.15517241">
           <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/listview/StickyListView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.81357884">
-          <caret line="551" column="0" selection-start-line="551" selection-start-column="0" selection-end-line="551" selection-end-column="0" />
-          <folding>
-            <element signature="e#13055#13194#0" expanded="true" />
-            <element signature="e#13193#13194#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2942,40 +2951,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_test_listview.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/listview/StickyListView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19950739">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.33256617">
+          <caret line="385" column="14" selection-start-line="385" selection-start-column="14" selection-end-line="385" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/listview/MyAdapter.java">
+    <entry file="file://D:/sdk/sources/android-20/android/widget/LinearLayout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="30" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.24971232">
+          <caret line="1487" column="52" selection-start-line="1487" selection-start-column="52" selection-end-line="1487" selection-end-column="52" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/test/TestListViewActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
-          <folding>
-            <element signature="e#2712#2718#0" expanded="true" />
-            <element signature="e#3539#3545#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/listview/ListViewWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1208#1209#0" expanded="true" />
@@ -2984,15 +2979,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_test_listview.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5263157">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/test/TestListViewActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+          <folding>
+            <element signature="e#2712#2718#0" expanded="true" />
+            <element signature="e#3539#3545#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/listview/MyAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26927504">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3049482">
-          <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="176" selection-end-column="5" />
+        <state vertical-scroll-proportion="1.1449943">
+          <caret line="163" column="13" selection-start-line="163" selection-start-column="13" selection-end-line="163" selection-end-column="13" />
           <folding>
             <element signature="class#State#0;class#BaseWrapper#0" expanded="false" />
-            <element signature="method#BaseWrapper#0;class#BaseWrapper#0" expanded="false" />
-            <element signature="method#init#0;class#BaseWrapper#0" expanded="false" />
-            <element signature="method#onMeasure#0;class#BaseWrapper#0" expanded="false" />
+            <element signature="e#2176#2856#0" expanded="true" />
+            <element signature="e#2855#2856#0" expanded="true" />
+            <element signature="method#onInterceptTouchEvent#0;class#BaseWrapper#0" expanded="false" />
+            <element signature="method#onTouchEvent#0;class#BaseWrapper#0" expanded="false" />
+            <element signature="e#11871#11872#0" expanded="true" />
+            <element signature="e#11913#11914#0" expanded="true" />
           </folding>
         </state>
       </provider>
