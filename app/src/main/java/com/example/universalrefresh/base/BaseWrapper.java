@@ -2,17 +2,17 @@ package com.example.universalrefresh.base;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
-public abstract class RefreshableWrapper<Header extends BaseRefresher, Content extends View, Footer extends BaseRefresher> extends LinearLayout {
+public abstract class BaseWrapper<Header extends BaseHeader, Content extends View, Footer extends BaseFooter> extends LinearLayout {
 
-	public static final String TAG = RefreshableWrapper.class.getSimpleName();
+	public static final String TAG = BaseWrapper.class.getSimpleName();
 
-	private Content mRefreshableView;
+	private Content mContentView;
 
     private Header mHeader;
     private View mHeaderView;
@@ -31,8 +31,8 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
 	private boolean mIsNeedInterceptTouchEvent = false;
 
     public enum State {
-		PULL_TO_REFRESH,
-		RELEASE_TO_REFRESH,
+        PULL_TO_EXECUTE,
+        RELEASE_TO_EXECUTE,
 		REFRESHING,
         ORIGIN
 	}
@@ -49,8 +49,8 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
 
 	public interface OnOperatingListener {
 		void onPulling(int operationType, int maxvalue, int absValue);
-		void onRefreshing(int operationType);
-		void onRefreshComplete(int operationType);
+		void onExecuting(int operationType);
+		void onComplete(int operationType);
 	}
 
 	private OnOperatingListener mOnRefreshListener;
@@ -59,17 +59,18 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
 		mOnRefreshListener = onRefreshListener;
 	}
 
-	public RefreshableWrapper(Context context, AttributeSet attrs) {
+	public BaseWrapper(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
 	private void init() {
 		setOrientation(VERTICAL);
+        setClickable(true);
 		mTouchSlop = dpToPx(4);
 
-		mRefreshableView = onCreateRefreshContentView();
-		if (mRefreshableView == null) {
+		mContentView = onCreateRefreshContentView();
+		if (mContentView == null) {
 			throw new RuntimeException("No refresh content view");
 		}
 
@@ -112,7 +113,7 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
 			}
 		}
 
-		addView(mRefreshableView);
+		addView(mContentView);
 
         if (mIsEnablePullUp) {
             mFooter = onCreateRefreshFooter();
@@ -131,25 +132,58 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        if (mRefreshableView != null) {
-            if (mRefreshableView instanceof ViewGroup) {
-                ViewGroup group = (ViewGroup) mRefreshableView;
-                if (group.getChildCount() != 0) {
-                    measureChild(mRefreshableView, widthMeasureSpec, heightMeasureSpec);
-                    setMeasuredDimension(getMeasuredWidth(), mRefreshableView.getMeasuredHeight());
-                }
-            } else {
-                measureChild(mRefreshableView, widthMeasureSpec, heightMeasureSpec);
-                setMeasuredDimension(getMeasuredWidth(), mRefreshableView.getMeasuredHeight());
-            }
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+
+        int width = 0, height = 0;
+
+        if (mIsEnablePullDown && mHeaderView != null) {
+            measureChild(mHeaderView, widthMeasureSpec, heightMeasureSpec);
         }
-
+        if (mContentView != null) {
+            measureChild(mContentView, widthMeasureSpec, heightMeasureSpec);
+        }
         if (mIsEnablePullUp && mFooterView != null) {
             measureChild(mFooterView, widthMeasureSpec, heightMeasureSpec);
         }
+
+        if (widthMode == MeasureSpec.EXACTLY) {
+            width = widthSize;
+        } else {
+            width = Math.max(width, mHeaderView.getMeasuredWidth());
+            width = Math.max(width, mContentView.getMeasuredWidth());
+            width = Math.max(width, mFooterView.getMeasuredWidth());
+        }
+
+        if (heightMode == MeasureSpec.EXACTLY) {
+            height = heightSize;
+        } else {
+            height = mContentView.getMeasuredHeight();
+        }
+
+        setMeasuredDimension(width, height);
     }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+
+        if (mFooterView != null && mFooterViewHeight != 0) {
+            mFooterView.layout(0, getMeasuredHeight(), getMeasuredWidth(), getMeasuredHeight() + mFooterViewHeight);
+        }
+    }
+
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        boolean hasTarget = super.dispatchTouchEvent(ev);
+//        if (!hasTarget) {
+//            return onInterceptTouchEvent(ev);
+//        }
+//        return true;
+//    }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
@@ -208,7 +242,7 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
                     case MotionEvent.ACTION_MOVE: {
 
                         if (mState == State.ORIGIN) {
-                            mState = mState.PULL_TO_REFRESH;
+                            mState = mState.PULL_TO_EXECUTE;
                         }
 
                         if (mOperationType == OPERATION_PULL_DOWN) {
@@ -217,15 +251,15 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
                             offset = offset < 0 ? 0 : offset;
                             pullDown(offset);
 
-                            if (mState == State.PULL_TO_REFRESH) {
+                            if (mState == State.PULL_TO_EXECUTE) {
                                 if (offset >= mHeaderViewHeight) {
-                                    setRefreshState(State.RELEASE_TO_REFRESH);
+                                    setRefreshState(State.RELEASE_TO_EXECUTE);
                                 }
                             }
 
-                            if (mState == State.RELEASE_TO_REFRESH) {
+                            if (mState == State.RELEASE_TO_EXECUTE) {
                                 if (offset < mHeaderViewHeight) {
-                                    setRefreshState(State.PULL_TO_REFRESH);
+                                    setRefreshState(State.PULL_TO_EXECUTE);
                                 }
                             }
                         } else if (mOperationType == OPERATION_PULL_UP) {
@@ -233,15 +267,16 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
                             int offset = (int) ((moveY - mLastMotionY) / ratio);
                             offset = offset > 0 ? 0 : offset;
                             pullUp(-offset);
-                            if (mState == State.PULL_TO_REFRESH) {
+
+                            if (mState == State.PULL_TO_EXECUTE) {
                                 if (getScrollY() >= mFooterViewHeight) {
-                                    setRefreshState(State.RELEASE_TO_REFRESH);
+                                    setRefreshState(State.RELEASE_TO_EXECUTE);
                                 }
                             }
 
-                            if (mState == State.RELEASE_TO_REFRESH) {
+                            if (mState == State.RELEASE_TO_EXECUTE) {
                                 if (getScrollY() < mFooterViewHeight) {
-                                    setRefreshState(State.PULL_TO_REFRESH);
+                                    setRefreshState(State.PULL_TO_EXECUTE);
                                 }
                             }
                         }
@@ -249,19 +284,13 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
                     }
                     case MotionEvent.ACTION_UP: {
                         if (mHasDownEvent) {
-                            if (mState == State.RELEASE_TO_REFRESH) {
-                                postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        completeRefresh();
-                                    }
-                                }, 1500);
-                                startRefresh();
+                            if (mState == State.RELEASE_TO_EXECUTE) {
+                                startOperating();
                             } else {
-                                cancelRefresh();
+                                cancelExecuting();
                             }
                         } else {
-                            cancelRefresh();
+                            cancelExecuting();
                         }
                         break;
                     }
@@ -295,11 +324,7 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
         }
     }
 
-    public void startRefresh() {
-		startRefresh(0);
-	}
-
-	public void startRefresh(long timeDelay) {
+    public void startOperating() {
         if (mOperationType == OPERATION_PULL_DOWN) {
             pullDown(mHeaderViewHeight);
             mHeader.onRefreshing();
@@ -308,14 +333,14 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
             mFooter.onRefreshing();
         }
 
-		setRefreshState(State.REFRESHING);
+        setRefreshState(State.REFRESHING);
 
-		if (mOnRefreshListener != null) {
-			mOnRefreshListener.onRefreshing(mOperationType);
-		}
+        if (mOnRefreshListener != null) {
+            mOnRefreshListener.onExecuting(mOperationType);
+        }
 	}
 
-	public void completeRefresh() {
+	public void completeExecuting() {
 
         if (mOperationType == OPERATION_PULL_DOWN) {
             hideHeader();
@@ -328,11 +353,11 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
 		setRefreshState(State.ORIGIN);
 
 		if (mOnRefreshListener != null) {
-			mOnRefreshListener.onRefreshComplete(mOperationType);
+			mOnRefreshListener.onComplete(mOperationType);
 		}
 	}
 
-    public void cancelRefresh() {
+    public void cancelExecuting() {
         if (mOperationType == OPERATION_PULL_DOWN) {
             hideHeader();
             mHeader.onCancel();
@@ -359,17 +384,25 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
 
     protected abstract Content onCreateRefreshContentView();
 
-    public Content getRefreshContentView() {
-        return mRefreshableView;
+    public Content getContentView() {
+        return mContentView;
     }
 
     public abstract boolean enablePullDown();
+
+    public void tooglePullDown(boolean toggle) {
+        mIsEnablePullDown = toggle;
+    }
 
 	public Header onCreateRefreshHeader() {
 		return null;
 	}
 
     public abstract boolean enablePullUp();
+
+    public void tooglePullUp(boolean toggle) {
+        mIsEnablePullUp = toggle;
+    }
 
     public Footer onCreateRefreshFooter() {
         return null;

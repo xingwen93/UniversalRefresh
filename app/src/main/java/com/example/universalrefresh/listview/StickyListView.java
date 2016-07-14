@@ -26,7 +26,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
 import android.os.Parcelable;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.View;
@@ -34,12 +33,10 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.AbsListView;
-import android.widget.Button;
 import android.widget.HeaderViewListAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SectionIndexer;
-import android.widget.Toast;
 
 import com.example.universalrefresh.BuildConfig;
 import com.example.universalrefresh.R;
@@ -537,7 +534,7 @@ public class StickyListView extends ListView {
     protected void onAttachedToWindow() {
     	super.onAttachedToWindow();
 
-    	View emptyView = inflate(getContext(), R.layout.activity_main_scroll_view, null);
+    	View emptyView = inflate(getContext(), R.layout.activity_test_scroll_view_content, null);
         emptyView.setClickable(true);
     	emptyView.setLayoutParams(new LayoutParams(-1, -1));
     	emptyView.setBackgroundColor(Color.YELLOW);

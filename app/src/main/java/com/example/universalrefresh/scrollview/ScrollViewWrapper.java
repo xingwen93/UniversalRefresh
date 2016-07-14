@@ -4,20 +4,20 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ScrollView;
 
-import com.example.universalrefresh.base.RefreshableWrapper;
+import com.example.universalrefresh.base.BaseWrapper;
 import com.example.universalrefresh.footer.ZCMFooter;
 import com.example.universalrefresh.header.ZCMHeader;
 
 /**
  * @author dwj  2016/7/4 16:28
  */
-public class RefreshableScrollView extends RefreshableWrapper<ZCMHeader, ScrollView, ZCMFooter> {
+public class ScrollViewWrapper extends BaseWrapper<ZCMHeader, ScrollView, ZCMFooter> {
 
-    public RefreshableScrollView(Context context) {
+    public ScrollViewWrapper(Context context) {
         this(context, null);
     }
 
-    public RefreshableScrollView(Context context, AttributeSet attrs) {
+    public ScrollViewWrapper(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -47,7 +47,7 @@ public class RefreshableScrollView extends RefreshableWrapper<ZCMHeader, ScrollV
 
     @Override
     protected boolean isReadyToPullDown() {
-       return getRefreshContentView().getScrollY() == 0;
+       return getContentView().getScrollY() == 0;
     }
 
     @Override
@@ -57,7 +57,7 @@ public class RefreshableScrollView extends RefreshableWrapper<ZCMHeader, ScrollV
 
     @Override
     protected boolean isReadyToPullUp() {
-        ScrollView contentView = getRefreshContentView();
+        ScrollView contentView = getContentView();
         int childHeight = contentView.getChildAt(0).getHeight();
         return childHeight == contentView.getScrollY() + contentView.getHeight();
     }

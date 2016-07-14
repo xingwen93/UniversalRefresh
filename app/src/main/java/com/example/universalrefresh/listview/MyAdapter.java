@@ -48,7 +48,7 @@ public class MyAdapter extends ArrayAdapter<Item> implements StickyListView.Pinn
             ItemGroup group = (ItemGroup) getItem(position);
             groupViewHolder.tvGroup.setText(group.getGroupName());
 
-            convertView.setBackgroundColor(COLORS[group.getGroupPosition() % COLORS.length]);
+            convertView.setBackgroundColor(COLORS[position % COLORS.length]);
         } else {
             MemberViewHolder memberViewHolder;
             if (convertView == null) {

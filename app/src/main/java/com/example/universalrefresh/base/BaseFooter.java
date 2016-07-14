@@ -2,14 +2,14 @@ package com.example.universalrefresh.base;
 
 import android.content.Context;
 import android.view.View;
-/**
- * @author dwj  2016/7/4 18:14
- */
 
-public abstract class BaseRefresher {
+/**
+ * @author dwj  2016/7/14 11:21
+ */
+public abstract class BaseFooter {
     private Context context;
 
-    public BaseRefresher(Context context) {
+    public BaseFooter(Context context) {
         this.context = context;
     }
 

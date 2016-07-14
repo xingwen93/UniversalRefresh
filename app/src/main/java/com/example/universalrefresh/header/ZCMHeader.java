@@ -8,13 +8,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.universalrefresh.R;
-import com.example.universalrefresh.base.BaseRefresher;
+import com.example.universalrefresh.base.BaseHeader;
 
 /**
  * @author dwj  2016/7/4 18:17
  *
  */
-public class ZCMHeader extends BaseRefresher {
+public class ZCMHeader extends BaseHeader {
 
     private TextView mTextTip;
     private ImageView mImageView;
@@ -26,7 +26,7 @@ public class ZCMHeader extends BaseRefresher {
 
     @Override
     public View get() {
-        View header = LayoutInflater.from(getContext()).inflate(R.layout.pull_to_refresh_listview_header, null);
+        View header = LayoutInflater.from(getContext()).inflate(R.layout.header_zcm, null);
         mTextTip = (TextView) header.findViewById(R.id.tv_header_tips);
         mTextTip.setText("招财猫理财");
         mImageView = (ImageView) header.findViewById(R.id.img_header_icon);
