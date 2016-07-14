@@ -170,11 +170,6 @@ public abstract class BaseWrapper<Header extends BaseHeader, Content extends Vie
     }
 
     @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        super.onLayout(changed, l, t, r, b);
-    }
-
-    @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         if (!mIsEnablePullDown && !mIsEnablePullUp) {
             return false;

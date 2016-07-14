@@ -86,18 +86,16 @@
       <file leaf-file-name="BaseWrapper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5028769">
-              <caret line="173" column="8" selection-start-line="173" selection-start-column="8" selection-end-line="173" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.44073647">
+              <caret line="170" column="0" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
               <folding>
                 <element signature="class#State#0;class#BaseWrapper#0" expanded="false" />
                 <element signature="e#2176#2856#0" expanded="true" />
                 <element signature="e#2855#2856#0" expanded="true" />
-                <element signature="e#5245#5246#0" expanded="true" />
-                <element signature="e#5296#5297#0" expanded="true" />
                 <element signature="method#onInterceptTouchEvent#0;class#BaseWrapper#0" expanded="false" />
                 <element signature="method#onTouchEvent#0;class#BaseWrapper#0" expanded="false" />
-                <element signature="e#12012#12013#0" expanded="true" />
-                <element signature="e#12054#12055#0" expanded="true" />
+                <element signature="e#11871#11872#0" expanded="true" />
+                <element signature="e#11913#11914#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2501,7 +2499,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java</url>
-          <line>410</line>
+          <line>405</line>
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
@@ -2513,19 +2511,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java</url>
-          <line>316</line>
+          <line>311</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java</url>
-          <line>382</line>
+          <line>377</line>
           <properties />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java</url>
-          <line>315</line>
+          <line>310</line>
           <properties class="com.example.universalrefresh.base.BaseWrapper" method="startOperating" />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
@@ -2537,7 +2535,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java</url>
-          <line>226</line>
+          <line>221</line>
           <properties class="com.example.universalrefresh.base.BaseWrapper" method="onTouchEvent" />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
@@ -3009,18 +3007,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/universalrefresh/base/BaseWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5028769">
-          <caret line="173" column="8" selection-start-line="173" selection-start-column="8" selection-end-line="173" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.44073647">
+          <caret line="170" column="0" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
           <folding>
             <element signature="class#State#0;class#BaseWrapper#0" expanded="false" />
             <element signature="e#2176#2856#0" expanded="true" />
             <element signature="e#2855#2856#0" expanded="true" />
-            <element signature="e#5245#5246#0" expanded="true" />
-            <element signature="e#5296#5297#0" expanded="true" />
             <element signature="method#onInterceptTouchEvent#0;class#BaseWrapper#0" expanded="false" />
             <element signature="method#onTouchEvent#0;class#BaseWrapper#0" expanded="false" />
-            <element signature="e#12012#12013#0" expanded="true" />
-            <element signature="e#12054#12055#0" expanded="true" />
+            <element signature="e#11871#11872#0" expanded="true" />
+            <element signature="e#11913#11914#0" expanded="true" />
           </folding>
         </state>
       </provider>
