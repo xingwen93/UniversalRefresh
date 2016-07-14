@@ -48,9 +48,9 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
     private int mOperationType = REFRESH_TYPE_NONE;
 
 	public interface OnRefreshListener {
-		void onPull(int refreshType, int maxvalue, int value);
-		void onRefreshing(int refreshType);
-		void onRefreshComplete(int refreshType);
+		void onPulling(int operationType, int maxvalue, int value);
+		void onRefreshing(int operationType);
+		void onRefreshComplete(int operationType);
 	}
 	private OnRefreshListener mOnRefreshListener;
 	public void setOnRefreshListener(OnRefreshListener onRefreshListener) {
@@ -86,14 +86,6 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
 
                 if (mIsEnablePullUp) {
                     mFooterViewHeight = mFooterView.getHeight();
-                    if (mFooterViewHeight != 0) {
-                        if (mRefreshableView != null) {
-                            mRefreshableView.layout(0, 0, getMeasuredWidth(), getMeasuredHeight());
-                        }
-                        if (mFooterView != null) {
-                            mFooterView.layout(0, 300, mFooterView.getMeasuredWidth(), 600);
-                        }
-                    }
                 }
 
                 if (mHeaderViewHeight != 0 || mFooterViewHeight != 0) {
@@ -224,13 +216,13 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
                             pullDown(offset);
 
                             if (mState == State.PULL_TO_REFRESH) {
-                                if (offset >= mHeaderViewHeight + mTouchSlop) {
+                                if (offset >= mHeaderViewHeight) {
                                     setRefreshState(State.RELEASE_TO_REFRESH);
                                 }
                             }
 
                             if (mState == State.RELEASE_TO_REFRESH) {
-                                if (offset < mHeaderViewHeight + mTouchSlop) {
+                                if (offset < mHeaderViewHeight) {
                                     setRefreshState(State.PULL_TO_REFRESH);
                                 }
                             }
@@ -240,13 +232,13 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
                             offset = offset > 0 ? 0 : offset;
                             pullUp(-offset);
                             if (mState == State.PULL_TO_REFRESH) {
-                                if (getScrollY() >= mFooterViewHeight + mTouchSlop) {
+                                if (getScrollY() >= mFooterViewHeight) {
                                     setRefreshState(State.RELEASE_TO_REFRESH);
                                 }
                             }
 
                             if (mState == State.RELEASE_TO_REFRESH) {
-                                if (getScrollY() < mFooterViewHeight + mTouchSlop) {
+                                if (getScrollY() < mFooterViewHeight) {
                                     setRefreshState(State.PULL_TO_REFRESH);
                                 }
                             }
@@ -287,7 +279,7 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
 
         if (mOnRefreshListener != null) {
             offset = offset > mHeaderViewHeight ? mHeaderViewHeight : offset;
-            mOnRefreshListener.onPull(OPERATION_PULL_DOWN, mHeaderViewHeight, offset);
+            mOnRefreshListener.onPulling(mOperationType, mHeaderViewHeight, offset);
         }
     }
 
@@ -298,7 +290,7 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
 
         if (mOnRefreshListener != null) {
             offset = offset > mFooterViewHeight ? mFooterViewHeight : offset;
-            mOnRefreshListener.onPull(OPERATION_PULL_UP, mFooterViewHeight, offset);
+            mOnRefreshListener.onPulling(mOperationType, mFooterViewHeight, offset);
         }
     }
 
@@ -335,7 +327,7 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
 		setRefreshState(State.ORIGIN);
 
 		if (mOnRefreshListener != null) {
-			mOnRefreshListener.onRefreshComplete(OPERATION_PULL_DOWN);
+			mOnRefreshListener.onRefreshComplete(mOperationType);
 		}
 	}
 
@@ -351,10 +343,6 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
     }
 
     private void hideHeader() {
-//        int left = mHeaderView.getPaddingLeft();
-//        int right = mHeaderView.getPaddingRight();
-//        int bottom = mHeaderView.getPaddingBottom();
-//        mHeaderView.setPadding(left, -mHeaderViewHeight, right, bottom);
         MarginLayoutParams lp = (MarginLayoutParams) mHeaderView.getLayoutParams();
         lp.topMargin = -mHeaderViewHeight;
         mHeaderView.setLayoutParams(lp);

@@ -26,8 +26,8 @@ public class MyAdapter extends ArrayAdapter<Item> implements StickyListView.Pinn
 
     @Override
     public int getCount() {
-//        return super.getCount();
-        return 1;
+        return super.getCount();
+//        return 0;
     }
 
     @SuppressLint("InflateParams")

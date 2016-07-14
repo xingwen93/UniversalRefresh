@@ -536,23 +536,7 @@ public class StickyListView extends ListView {
     @Override
     protected void onAttachedToWindow() {
     	super.onAttachedToWindow();
-    	
-//    	final Button emptyView = new Button(getContext());
-//    	emptyView.setLayoutParams(new LayoutParams(-1, -1));
-//    	emptyView.setText("EmptyView");
-//    	emptyView.setGravity(Gravity.CENTER);
-//    	emptyView.setTextSize(30);
-//    	emptyView.setBackgroundColor(Color.YELLOW);
-//    	emptyView.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				Toast.makeText(getContext(), emptyView.getText().toString(), Toast.LENGTH_SHORT).show();
-//			}
-//		});
-//    	ViewGroup parent = (ViewGroup) getParent();
-//    	parent.addView(emptyView);
-//    	setEmptyView(emptyView);
-    	
+
     	View emptyView = inflate(getContext(), R.layout.activity_main_scroll_view, null);
         emptyView.setClickable(true);
     	emptyView.setLayoutParams(new LayoutParams(-1, -1));
@@ -565,7 +549,6 @@ public class StickyListView extends ListView {
         }
 
     	setEmptyView(emptyView);
-
     }
 
 }

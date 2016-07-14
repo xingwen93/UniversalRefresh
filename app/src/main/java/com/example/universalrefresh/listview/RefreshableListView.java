@@ -2,11 +2,9 @@ package com.example.universalrefresh.listview;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.AbsListView;
 
 import com.example.universalrefresh.base.RefreshableWrapper;
-import com.example.universalrefresh.base.RefreshableWrapper2;
 import com.example.universalrefresh.footer.ZCMFooter;
 import com.example.universalrefresh.header.ZCMHeader;
 
