@@ -19,7 +19,7 @@ public abstract class BaseRefresher {
 
     public abstract View get();
 
-    public abstract void onPulling(int max, int offset);
+    public abstract void onPulling(int maxValue, int absValue);
 
     public abstract void onRefreshing();
 

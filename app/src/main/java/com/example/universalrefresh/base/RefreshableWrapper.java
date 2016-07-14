@@ -47,13 +47,15 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
 
     private int mOperationType = REFRESH_TYPE_NONE;
 
-	public interface OnRefreshListener {
-		void onPulling(int operationType, int maxvalue, int value);
+	public interface OnOperatingListener {
+		void onPulling(int operationType, int maxvalue, int absValue);
 		void onRefreshing(int operationType);
 		void onRefreshComplete(int operationType);
 	}
-	private OnRefreshListener mOnRefreshListener;
-	public void setOnRefreshListener(OnRefreshListener onRefreshListener) {
+
+	private OnOperatingListener mOnRefreshListener;
+
+	public void setOnOperatingListener(OnOperatingListener onRefreshListener) {
 		mOnRefreshListener = onRefreshListener;
 	}
 
@@ -270,6 +272,7 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
         }
         return true;
     }
+
     private void pullDown(int offset) {
         MarginLayoutParams lp = (MarginLayoutParams) mHeaderView.getLayoutParams();
         lp.topMargin = -mHeaderViewHeight + offset;
@@ -278,7 +281,6 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
         mHeader.onPulling(mHeaderViewHeight, offset);
 
         if (mOnRefreshListener != null) {
-            offset = offset > mHeaderViewHeight ? mHeaderViewHeight : offset;
             mOnRefreshListener.onPulling(mOperationType, mHeaderViewHeight, offset);
         }
     }
@@ -289,7 +291,6 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
         mFooter.onPulling(mFooterViewHeight, offset);
 
         if (mOnRefreshListener != null) {
-            offset = offset > mFooterViewHeight ? mFooterViewHeight : offset;
             mOnRefreshListener.onPulling(mOperationType, mFooterViewHeight, offset);
         }
     }
@@ -362,17 +363,17 @@ public abstract class RefreshableWrapper<Header extends BaseRefresher, Content e
         return mRefreshableView;
     }
 
+    public abstract boolean enablePullDown();
+
 	public Header onCreateRefreshHeader() {
 		return null;
 	}
 
-    public abstract boolean enablePullDown();
+    public abstract boolean enablePullUp();
 
     public Footer onCreateRefreshFooter() {
         return null;
     }
-
-    public abstract boolean enablePullUp();
 
 	protected abstract boolean isReadyToPullDown();
 

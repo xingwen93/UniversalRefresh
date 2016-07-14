@@ -43,8 +43,8 @@ public class ZCMFooter extends BaseRefresher {
     }
 
     @Override
-    public void onPulling(int max, int offset) {
-        if (offset >= max) {
+    public void onPulling(int maxValue, int absValue) {
+        if (absValue >= maxValue) {
             footer.setText("松开加载更多");
         } else {
             footer.setText("上拉加载更多");

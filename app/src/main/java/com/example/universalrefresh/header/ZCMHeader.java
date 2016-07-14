@@ -37,7 +37,7 @@ public class ZCMHeader extends BaseRefresher {
     }
 
     @Override
-    public void onPulling(int mRefreshHeaderHeight, int offset) {
+    public void onPulling(int maxValue, int absValue) {
         if (!mAnimationDrawable.isRunning()) {
             mAnimationDrawable.start();
         }
